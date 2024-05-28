@@ -49,18 +49,18 @@ class CafeHomeWidget extends StatelessWidget {
                 Row(
                   children: [
                     Container(
-                      width: 60,
-                      height: 60,
+                      width: 50,
+                      height: 50,
                       decoration: const BoxDecoration(
                           color: Colors.amber,
-                          borderRadius: BorderRadius.all(Radius.circular(24))
+                          borderRadius: BorderRadius.all(Radius.circular(18))
                       ),
                     ),
                     const SizedBox(width: 8,),
                     const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('카폐 명', style: TextStyle(fontSize: 20),),
+                        Text('카페 명', style: TextStyle(fontSize: 20),),
                         Text('새글 12', style: TextStyle(fontSize: 12),),
                       ],
                     ),
@@ -276,22 +276,23 @@ class CafeHomeWidget extends StatelessWidget {
                   return Column(
                     children: [
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('${index+1}'),
                           const SizedBox(width: 8,),
                           Container(
-                            width: 60,
-                            height: 60,
+                            width: 50,
+                            height: 50,
                             decoration: const BoxDecoration(
                               color: Colors.amber,
-                              borderRadius: BorderRadius.all(Radius.circular(24))
+                              borderRadius: BorderRadius.all(Radius.circular(18))
                             ),
                           ),
                           const SizedBox(width: 8,),
                           const Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('카폐명', style: TextStyle(fontSize: 16),),
+                              Text('카페명', style: TextStyle(fontSize: 16),),
                               SizedBox(width: 300, child: Text('영화/연극/공연등 티켓 교환 더 즐겁게 디즈니 플러스와도 함께 해요', style: TextStyle(fontSize: 12),)),
                               SizedBox(height: 4,),
                               Row(
