@@ -103,9 +103,9 @@ Widget neighborhoodNews() {
               ),
             ),
             ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: 200,
-              physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (BuildContext context, int index) {
                 if(index == 1) {
                   return Container(
@@ -121,8 +121,8 @@ Widget neighborhoodNews() {
                         ),
                         const SizedBox(height: 10,),
                         ListView.builder(
-                          shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
                           itemCount: 5,
                           itemBuilder: (BuildContext context, int index) {
                             return Column(
@@ -165,7 +165,26 @@ Widget neighborhoodNews() {
                               ],
                             );
                           }
-                        )
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                          child: Container(
+                            width: double.infinity,
+                            height: 40,
+                            decoration: const BoxDecoration(
+                                color: Colors.grey,
+                                borderRadius: BorderRadius.all(Radius.circular(8))
+                            ),
+                            child: const Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text('다른 인기글 보기', style: TextStyle(color: Colors.white),),
+                                SizedBox(width: 4,),
+                                Icon(Icons.refresh),
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   );
@@ -177,7 +196,7 @@ Widget neighborhoodNews() {
                         padding: const EdgeInsets.fromLTRB(10, 10, 10, 20),
                         child: Column(
                           children: [
-                            Row(
+                            const Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text('내 주변에서 중고거래하기', style: TextStyle(fontSize: 16),),
@@ -223,12 +242,12 @@ Widget neighborhoodNews() {
                                                 color: Colors.blue,
                                                 borderRadius: BorderRadius.all(Radius.circular(6)),
                                               ),
-                                              child: Center(child: Text('카페')),
+                                              child: const Center(child: Text('카페')),
                                             ),
                                             const SizedBox(width: 6,),
-                                            Text('을지로 6가')
+                                            const Text('을지로 6가')
                                           ],
-                                        )
+                                        ),
                                       ],
                                     ),
                                   );
@@ -289,7 +308,7 @@ Widget neighborhoodNews() {
                       const SizedBox(height: 4,),
                       Container(
                         padding: const EdgeInsets.only(left: 10, right: 10),
-                        child: Text('내용이 있습니다. 테스트 중 입니다.')
+                        child: const Text('내용이 있습니다. 테스트 중 입니다.')
                       ),
                       const SizedBox(height: 4,),
                       Container(
@@ -338,9 +357,109 @@ Widget neighborhoodNews() {
 }
 
 Widget usedTrade() {
+  bool switchValue = true;
   return Column(
     children: [
+      const SizedBox(height: 20,),
+      SizedBox(
+        width: double.infinity,
+        height: 40,
+        child: ListView.builder(
+          itemCount: 12,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (BuildContext context, int index) {
+            return Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
+                  decoration: const BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                  ),
+                  child: const Text('전체', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700),),
+                ),
+                const SizedBox(width: 6,),
+              ],
+            );
+          },
+        ),
+      ),
+      const SizedBox(height: 20,),
 
+      Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          const Text('관심키워드', style: TextStyle(fontSize: 14),),
+          const SizedBox(width: 4,),
+          const Icon(Icons.edit_notifications_outlined),
+          const SizedBox(width: 12,),
+          Row(
+            children: [
+              const Text('이웃 거래글만', style: TextStyle(fontSize: 14),),
+              Transform.scale(
+                scale: 0.7,
+                child: Switch(
+                  value: switchValue,
+                  onChanged: (bool value) {
+                    switchValue = value;
+                  },
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+      const SizedBox(height: 16,),
+      Expanded(
+        child: GridView.builder(
+          shrinkWrap: true,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, mainAxisSpacing: 1, crossAxisSpacing: 1, childAspectRatio: 0.72,
+          ),
+          itemBuilder: (context, index) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: 200,
+                  height: 180,
+                  decoration: const BoxDecoration(
+                    color: Colors.lightGreen,
+                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                  ),
+                ),
+                const SizedBox(height: 4,),
+                const Text('홈플러스 상품권 신세계 롯데 상품권'),
+                const Row(
+                  children: [
+                    Text('180,000'),
+                    Text('원'),
+                  ],
+                ),
+                const SizedBox(height: 8,),
+                Row(
+                  children: [
+                    Container(
+                      width: 36,
+                      height: 20,
+                      padding: const EdgeInsets.fromLTRB(4, 2, 4, 2),
+                      decoration: const BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.all(Radius.circular(6)),
+                      ),
+                      child: const Center(child: Text('카페')),
+                    ),
+                    const SizedBox(width: 6,),
+                    const Text('을지로 6가')
+                  ],
+                ),
+                const SizedBox(height: 4,),
+                const Text('9시간 전'),
+              ],
+            );
+          }
+        ),
+      ),
     ],
   );
 }
@@ -348,7 +467,82 @@ Widget usedTrade() {
 Widget popularNeighborhoodCafe() {
   return Column(
     children: [
-
+      Expanded(
+        child: ListView(
+          children: [
+            const SizedBox(height: 16,),
+            const Text('우리 동네에서 활발하게 활동하는 카페들을 만나보세요!'),
+            const Text('자세히 보기 >'),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: 20,
+              itemBuilder: (BuildContext context, int index) { 
+                return Column(
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          width: 60,
+                          height: 60,
+                          decoration: const BoxDecoration(
+                            color: Colors.brown,
+                            borderRadius: BorderRadius.all(Radius.circular(16))
+                          ),
+                        ),
+                        const SizedBox(width: 14,),
+                        const Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('서울시 대중교통 이용자 모임'),
+                            SizedBox(height: 8,),
+                            Text('서울 수도권 대중교통에 관한 이야기를 합니다.'),
+                            SizedBox(height: 4,),
+                            Row(
+                              children: [
+                                Icon(Icons.where_to_vote),
+                                Text('서울특별시'),
+                                SizedBox(width: 10,),
+                                Icon(Icons.person),
+                                Text('2,983'),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8, bottom: 8),
+                      child: Container(
+                        width: double.infinity,
+                        height: 1,
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade400,
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ),
+            const SizedBox(height: 12,),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Icon(Icons.where_to_vote),
+                    SizedBox(width: 8,),
+                    Text('모든 지역 카페 보러가기')
+                  ],
+                ),
+                Icon(Icons.keyboard_arrow_right)
+              ],
+            ),
+            const SizedBox(height: 30,),
+          ],
+        ),
+      ),
     ],
   );
 }

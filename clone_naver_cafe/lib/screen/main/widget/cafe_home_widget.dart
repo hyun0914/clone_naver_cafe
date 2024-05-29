@@ -34,7 +34,7 @@ class CafeHomeWidget extends StatelessWidget {
                   ),
                   const Text('더보기', style: TextStyle(fontSize: 14),),
                 ],
-              )
+              ),
             ],
           ),
         ),
@@ -68,8 +68,8 @@ class CafeHomeWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: 8,),
                 ListView.builder(
-                  shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
                   padding: const EdgeInsets.only(left: 8),
                   itemCount: 3,
                   itemBuilder: (BuildContext context, int index) {
@@ -129,8 +129,8 @@ class CafeHomeWidget extends StatelessWidget {
               const SizedBox(height: 8,),
               ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: 4,
                 shrinkWrap: true,
+                itemCount: 4,
                 itemBuilder: (BuildContext context, int index) {
                   return const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -197,8 +197,8 @@ class CafeHomeWidget extends StatelessWidget {
               const SizedBox(height: 8,),
               ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: 4,
                 shrinkWrap: true,
+                itemCount: 4,
                 itemBuilder: (BuildContext context, int index) {
                   return const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -260,8 +260,8 @@ class CafeHomeWidget extends StatelessWidget {
               ),
               const SizedBox(height: 4,),
               ListView.separated(
-                shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
                 itemCount: 20,
                 separatorBuilder: (BuildContext context, int index) {
                   return Padding(
@@ -331,8 +331,8 @@ class CafeHomeWidget extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ListView.builder(
-                      shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
                       itemCount: 3,
                       itemBuilder: (BuildContext context, int index) {
                         return Padding(
@@ -358,8 +358,8 @@ class CafeHomeWidget extends StatelessWidget {
                   ),
                   Expanded(
                     child: ListView.builder(
-                      shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
                       itemCount: 2,
                       itemBuilder: (BuildContext context, int index) {
                         return Padding(
