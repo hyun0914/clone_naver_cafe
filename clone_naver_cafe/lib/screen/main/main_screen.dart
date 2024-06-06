@@ -76,7 +76,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
           BottomNavigationBarItem(
             label: '채팅',
-            icon: Icon(Icons.sms),
+            icon: Icon(Icons.sms_outlined),
           ),
         ],
         onTap: (value) {
